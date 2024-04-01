@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .activeTab{
+        @apply bg-[#F2F6FF] text-[#2262FB];
+    }
+    .borderHeader{
+        @apply h-10 border-[1px] border-[#D2DCE7] border-solid text-center flex items-center text-[#475669];
+    }
+    .borderBody{
+        @apply flex-1  h-10 border-[1px] border-[#D2DCE7] border-solid text-center flex items-center justify-center text-[#475669] -ml-[1px];
+    }
+}
