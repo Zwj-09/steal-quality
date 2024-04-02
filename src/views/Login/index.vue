@@ -68,6 +68,8 @@ const handleSuccess = () => {
             v-model="loginForm.password"
             placeholder="请输入登录密码"
             :prefix-icon="Lock"
+            type="password"
+            show-password
           />
         </el-form-item>
         <el-form-item prop="status">
