@@ -2,7 +2,7 @@
   <template v-for="menu in props.menuList" :key="menu.id">
     <el-sub-menu
       v-if="menu && menu.children && menu.children.length"
-      :index="menu.path"
+      :index="menu.url"
     >
       <template #title>
         <el-icon :size="16">
@@ -14,7 +14,7 @@
       <menu-item :menuList="menu.children" />
     </el-sub-menu>
 
-    <el-menu-item :index="menu.path" v-else>
+    <el-menu-item :index="menu.url" v-else>
       <el-icon :size="16">
         <component :is="menu.icon"></component>
       </el-icon>
