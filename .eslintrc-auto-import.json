@@ -68,6 +68,7 @@
     "watchEffect": true,
     "watchPostEffect": true,
     "watchSyncEffect": true,
-    "getImgs": true
+    "getImgs": true,
+    "ElMessage": true
   }
 }

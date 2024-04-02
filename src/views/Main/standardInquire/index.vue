@@ -173,6 +173,7 @@ const handlePageChange = (newPage) => {
       >
         <div class="h-[30px] mb-5 text-right">
           <el-button
+            v-permission="'set'"
             type="primary"
             :icon="Setting"
             :style="{

@@ -4,6 +4,7 @@ import multipleComp from "./multiple/index.vue";
 import { setAsideTabKey } from "@/utils/setAsideTabKey";
 import { getStorage, setStorage } from "@/utils/storage";
 import { Search } from "@element-plus/icons-vue";
+import { useThrottleFn } from "@vueuse/core";
 
 const tabs = ref([
   { label: "单钢卷", value: "单钢卷" },
@@ -51,6 +52,18 @@ const options = ref([
     label: "Option5"
   }
 ]);
+
+const handleSearch = useThrottleFn((type) => {
+  if (!searchParams[type]) {
+    ElMessage({
+      type: "info",
+      message: "请先输入搜索内容",
+      duration: 1000
+    });
+    return;
+  }
+  console.log("aaa");
+}, 1000);
 </script>
 
 <template>
@@ -99,7 +112,12 @@ const options = ref([
                 <div>工艺参数分析</div>
               </div>
               <div class="w-[1px] h-4 bg-[#90B1FF] rounded-lg"></div>
-              <div class="text-[#2262FB] hover:cursor-pointer">查询</div>
+              <div
+                class="text-[#2262FB] hover:cursor-pointer"
+                @click="handleSearch('analysis')"
+              >
+                查询
+              </div>
             </div>
             <el-select
               v-model="searchParams.analysis"
@@ -128,7 +146,12 @@ const options = ref([
                 <div>关键因素提取</div>
               </div>
               <div class="w-[1px] h-4 bg-[#90B1FF] rounded-lg"></div>
-              <div class="text-[#2262FB] hover:cursor-pointer">查询</div>
+              <div
+                class="text-[#2262FB] hover:cursor-pointer"
+                @click="handleSearch('keywords')"
+              >
+                查询
+              </div>
             </div>
             <el-select
               v-model="searchParams.keywords"
@@ -150,7 +173,12 @@ const options = ref([
                 <div>工艺参数优化</div>
               </div>
               <div class="w-[1px] h-4 bg-[#90B1FF] rounded-lg"></div>
-              <div class="text-[#2262FB] hover:cursor-pointer">查询</div>
+              <div
+                class="text-[#2262FB] hover:cursor-pointer"
+                @click="handleSearch('optimization')"
+              >
+                查询
+              </div>
             </div>
             <el-select
               v-model="searchParams.optimization"
@@ -178,11 +206,11 @@ const options = ref([
         <span class="text-lg text-[#35404F]">查询结果</span>
       </div>
 
-      <div class="flex-1" v-if="!currentTab">
+      <div class="h-full overflow-hidden" v-if="!currentTab">
         <single-comp />
       </div>
 
-      <div class="flex-1" v-else>
+      <div class="h-full overflow-hidden" v-else>
         <multiple-comp />
       </div>
     </div>

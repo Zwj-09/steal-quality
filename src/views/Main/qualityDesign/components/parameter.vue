@@ -102,7 +102,7 @@ const handleTab = (index) => {
 </script>
 
 <template>
-  <div class="flex items-center justify-between h-[30px]">
+  <div class="flex items-center justify-between h-[30px] mb-1">
     <div>
       <el-icon color="#2262FB"><Postcard /></el-icon>
       <span class="align-top ml-2">工艺参数设计</span>

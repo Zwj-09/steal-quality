@@ -18,4 +18,7 @@
     .asidePart{
         @apply  w-full h-10 bg-[#EDF2FF] rounded-lg flex items-center justify-between py-[10px] pr-4 box-border my-4;
     }
+    .multipleSection{
+        @apply  bg-white rounded-lg py-4 px-6 box-border flex flex-col;
+    }
 }

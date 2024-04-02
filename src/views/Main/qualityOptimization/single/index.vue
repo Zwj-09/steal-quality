@@ -11,14 +11,14 @@ import parameterComp from "../components/singleParameter.vue";
           <el-icon color="#2262FB"><Postcard /></el-icon>
           <span class="align-top ml-2">铁损与工艺参数变化</span>
         </div>
-        <div class="flex-1">图表</div>
+        <div class="flex-1 overflow-hidden">图表</div>
       </div>
       <div class="w-2/3 commonSection">
         <div class="mb-5 h-6">
           <el-icon color="#2262FB"><Postcard /></el-icon>
           <span class="align-top ml-2">不同铁损钢带公益分布参数直方图</span>
         </div>
-        <div class="flex-1">图表</div>
+        <div class="flex-1 overflow-hidden">图表</div>
       </div>
     </div>
 
