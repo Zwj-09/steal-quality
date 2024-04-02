@@ -1,18 +1,43 @@
 <script setup>
 import { User, Lock } from "@element-plus/icons-vue";
 import { useLoginStore } from "@/store/Login";
+import SilderVerify from "@/components/SilderVerify";
 
 const loginStore = useLoginStore();
 
 const btnClick = () => {
-  loginStore.handleLogin();
+  formRef.value.validate((valid) => {
+    if (valid) {
+      loginStore.handleLogin();
+    }
+  });
 };
 
+const formRef = ref(null);
 const loginForm = reactive({
   username: "",
   password: "",
-  isAutoLogin: false
+  isAutoLogin: false,
+  status: false
 });
+
+const validatestatus = (rule, value, callback) => {
+  if (!value) {
+    callback(new Error("请拖动滑块完成验证"));
+  } else {
+    callback();
+  }
+};
+
+const rules = reactive({
+  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+  status: [{ validator: validatestatus, trigger: "change" }]
+});
+
+const handleSuccess = () => {
+  loginForm.status = true;
+};
 </script>
 
 <template>
@@ -28,8 +53,8 @@ const loginForm = reactive({
         <span class="text-xs">USER LOGIN</span>
       </div>
 
-      <el-form>
-        <el-form-item>
+      <el-form :rules="rules" :model="loginForm" ref="formRef">
+        <el-form-item prop="username">
           <el-input
             class="h-10"
             v-model="loginForm.username"
@@ -37,13 +62,16 @@ const loginForm = reactive({
             :prefix-icon="User"
           />
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input
             class="h-10"
             v-model="loginForm.password"
             placeholder="请输入登录密码"
             :prefix-icon="Lock"
           />
+        </el-form-item>
+        <el-form-item prop="status">
+          <silder-verify @success="handleSuccess" @failed="handleError" />
         </el-form-item>
       </el-form>
 
