@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 import router from "@/router";
 import { mapMenuToRoutes } from "@/utils/mapMenuToRoutes";
-import { getStorage, setStorage } from "@/utils/storage";
+import { clearStorage, getStorage, setStorage } from "@/utils/storage";
 import { MENUKEY, TOKENKEY } from "@/config/keys";
 import { EXPIRETIME } from "../../config/keys";
 
@@ -60,9 +60,17 @@ export const useLoginStore = defineStore("login", () => {
     }
   };
 
+  const handleLogOut = () => {
+    clearStorage();
+    setTimeout(() => {
+      router.push("/login");
+    }, 300);
+  };
+
   return {
     token,
     handleLogin,
+    handleLogOut,
     loadCache
   };
 });

@@ -10,6 +10,9 @@ export default {
       colors: {
         "active-text": "#2262FB",
         "primary-text": "#8593A7"
+      },
+      backgroundImage: {
+        "login-bg": "url('/src/assets/imgs/login/bg.png')"
       }
     }
   },

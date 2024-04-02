@@ -3,7 +3,6 @@ import { onMounted, reactive } from "vue";
 import { Setting } from "@element-plus/icons-vue";
 
 import myTable from "@/components/myTable/index.vue";
-import menuItem from "@/components/menuItem/index.vue";
 
 onMounted(() => {
   getTableData();
@@ -155,59 +154,11 @@ const handlePageChange = (newPage) => {
   tableData.currentPage = newPage;
   getTableData();
 };
-
-const menuList = ref([
-  {
-    name: "Person",
-    path: "/standar",
-    meta: {
-      icon: "#",
-      title: "标准"
-    }
-  },
-  {
-    name: "set",
-    path: "/set",
-    meta: {
-      icon: "#",
-      title: "门户设置"
-    },
-    children: [
-      {
-        name: "optimization",
-        path: "/optimization",
-        meta: {
-          icon: "#",
-          title: "查找"
-        }
-      },
-      {
-        name: "design",
-        path: "/design",
-        meta: {
-          icon: "#",
-          title: "设计优化"
-        }
-      }
-    ]
-  }
-]);
 </script>
 
 <template>
   <div class="flex h-full">
-    <div class="w-60 bg-red-500 mr-4">
-      <el-menu
-        background-color="#fff"
-        text-color="#000"
-        active-color="#fff"
-        :default-active="$route.path"
-        :unique-opened="true"
-        router
-      >
-        <menu-item :menuList="menuList" />
-      </el-menu>
-    </div>
+    <div class="w-60 bg-red-500 mr-4">侧边栏</div>
     <div class="flex-1 flex flex-col">
       <div class="flex items-center mb-5">
         <img

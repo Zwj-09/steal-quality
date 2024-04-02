@@ -5,8 +5,8 @@
       :index="menu.path"
     >
       <template #title>
-        <el-icon>
-          <component :is="menu.icon ? menu.icon.split('-icon-')[1] : ''" />
+        <el-icon :size="16">
+          <component :is="menu.icon"></component>
         </el-icon>
         <span>{{ menu.meta.title }}</span>
       </template>
@@ -15,10 +15,10 @@
     </el-sub-menu>
 
     <el-menu-item :index="menu.path" v-else>
-      <el-icon>
-        <component :is="menu.icon ? menu.icon.split('-icon-')[1] : ''" />
+      <el-icon :size="16">
+        <component :is="menu.icon"></component>
       </el-icon>
-      <span>{{ menu.meta.title }}</span>
+      <span>{{ menu.title }}</span>
     </el-menu-item>
   </template>
 </template>
