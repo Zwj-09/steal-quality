@@ -14,12 +14,43 @@ const currentTab = ref(getStorage(CURRENTASIDETABKEY) || 0);
 const tabClickc = (index) => {
   if (index === currentTab.value) return;
   currentTab.value = index;
+  Object.keys(searchParams).forEach((key) => (searchParams[key] = ""));
   setStorage(CURRENTASIDETABKEY, index);
 };
 
 onBeforeRouteLeave(() => {
   setStorage(CURRENTASIDETABKEY, 0);
 });
+
+const searchParams = reactive({
+  code: "",
+  analysis: "",
+  parameter: "",
+  keywords: "",
+  optimization: ""
+});
+const options = ref([
+  {
+    value: "Option1",
+    label: "Option1"
+  },
+  {
+    value: "Option2",
+    label: "Option2"
+  },
+  {
+    value: "Option3",
+    label: "Option3"
+  },
+  {
+    value: "Option4",
+    label: "Option4"
+  },
+  {
+    value: "Option5",
+    label: "Option5"
+  }
+]);
 </script>
 
 <template>
@@ -48,10 +79,91 @@ onBeforeRouteLeave(() => {
               placeholder="请搜索选择钢卷号"
               :prefix-icon="Search"
               class="mr-[10px]"
+              v-model="searchParams.code"
             ></el-input>
-            <el-icon size="16" color="#8593A7" class="hover:cursor-pointer">
-              <Warning />
-            </el-icon>
+
+            <el-tooltip
+              effect="dark"
+              content="这里是提示语句"
+              placement="right"
+            >
+              <el-icon size="16" color="#8593A7" class="hover:cursor-pointer">
+                <Warning />
+              </el-icon>
+            </el-tooltip>
+          </div>
+          <div>
+            <div class="asidePart">
+              <div class="flex items-center h-full">
+                <div class="w-[2px] h-full bg-[#2262FB] rounded-lg mr-2"></div>
+                <div>工艺参数分析</div>
+              </div>
+              <div class="w-[1px] h-4 bg-[#90B1FF] rounded-lg"></div>
+              <div class="text-[#2262FB] hover:cursor-pointer">查询</div>
+            </div>
+            <el-select
+              v-model="searchParams.analysis"
+              placeholder="请选择工段"
+              clearable
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+            <el-input
+              v-if="!currentTab"
+              placeholder="请搜索选择工艺参数"
+              v-model="searchParams.parameter"
+              :prefix-icon="Search"
+              class="mt-4"
+            ></el-input>
+          </div>
+          <div>
+            <div class="asidePart">
+              <div class="flex items-center h-full">
+                <div class="w-[2px] h-full bg-[#2262FB] rounded-lg mr-2"></div>
+                <div>关键因素提取</div>
+              </div>
+              <div class="w-[1px] h-4 bg-[#90B1FF] rounded-lg"></div>
+              <div class="text-[#2262FB] hover:cursor-pointer">查询</div>
+            </div>
+            <el-select
+              v-model="searchParams.keywords"
+              placeholder="请选择工段"
+              clearable
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </div>
+          <div>
+            <div class="asidePart">
+              <div class="flex items-center h-full">
+                <div class="w-[2px] h-full bg-[#2262FB] rounded-lg mr-2"></div>
+                <div>工艺参数优化</div>
+              </div>
+              <div class="w-[1px] h-4 bg-[#90B1FF] rounded-lg"></div>
+              <div class="text-[#2262FB] hover:cursor-pointer">查询</div>
+            </div>
+            <el-select
+              v-model="searchParams.optimization"
+              placeholder="请选择算法"
+              clearable
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
           </div>
         </div>
       </div>

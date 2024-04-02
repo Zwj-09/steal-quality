@@ -12,4 +12,10 @@
     .borderBody{
         @apply flex-1  h-10 border-[1px] border-[#D2DCE7] border-solid text-center flex items-center justify-center text-[#475669] -ml-[1px];
     }
+    .commonSection{
+        @apply bg-white rounded-lg py-4 px-6 box-border flex flex-col;
+    }
+    .asidePart{
+        @apply  w-full h-10 bg-[#EDF2FF] rounded-lg flex items-center justify-between py-[10px] pr-4 box-border my-4;
+    }
 }

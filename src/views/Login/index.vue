@@ -1,6 +1,8 @@
 <template>
-  <h1>Login Page</h1>
-  <button @click="btnClick">登录</button>
+  <div class="">
+    <h1>Login Page</h1>
+    <button @click="btnClick">登录</button>
+  </div>
 </template>
 
 <script setup>
