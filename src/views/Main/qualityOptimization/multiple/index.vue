@@ -6,7 +6,7 @@ import parameterComp from "../components/multipleParameter.vue";
 <template>
   <div class="h-full flex flex-col rounded-lg overflow-hidden bg-red">
     <div class="flex-1 multipleSection overflow-hidden">
-      <div class="mb-1">
+      <div class="mb-5 h-6">
         <el-icon color="#2262FB"><Postcard /></el-icon>
         <span class="align-top ml-2">铁损与工艺参数变化</span>
       </div>
