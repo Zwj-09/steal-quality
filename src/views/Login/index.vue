@@ -1,7 +1,6 @@
 <script setup>
 import { User, Lock } from "@element-plus/icons-vue";
 import { useLoginStore } from "@/store/Login";
-import SilderVerify from "@/components/SilderVerify";
 
 const loginStore = useLoginStore();
 
@@ -17,27 +16,13 @@ const formRef = ref(null);
 const loginForm = reactive({
   username: "",
   password: "",
-  isAutoLogin: false,
-  status: false
+  isAutoLogin: false
 });
-
-const validatestatus = (rule, value, callback) => {
-  if (!value) {
-    callback(new Error("请拖动滑块完成验证"));
-  } else {
-    callback();
-  }
-};
 
 const rules = reactive({
   username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
-  password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-  status: [{ validator: validatestatus, trigger: "change" }]
+  password: [{ required: true, message: "请输入密码", trigger: "blur" }]
 });
-
-const handleSuccess = () => {
-  loginForm.status = true;
-};
 </script>
 
 <template>
@@ -71,9 +56,6 @@ const handleSuccess = () => {
             type="password"
             show-password
           />
-        </el-form-item>
-        <el-form-item prop="status">
-          <silder-verify @success="handleSuccess" @failed="handleError" />
         </el-form-item>
       </el-form>
 

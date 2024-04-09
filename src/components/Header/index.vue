@@ -58,10 +58,50 @@ const loginOut = () => {
       </el-menu>
 
       <div class="text-red-500 hover:cursor-pointer" @click="loginOut">
-        退出登录
+        <svg
+          t="1712581555162"
+          class="icon w-6 h-6"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5249"
+          width="200"
+          height="200"
+        >
+          <!-- fill="#8BAEF7" -->
+          <path
+            d="M966.829213 466.944L762.989213 290.24a61.76 61.76 0 0 0-40.896-15.168 60.096 60.096 0 0 0-61.504 58.88 57.92 57.92 0 0 0 20.352 43.84l85.376 74.048H395.821213a58.944 58.944 0 1 0 0 117.824h371.2l-85.376 74.048a57.6 57.6 0 0 0-20.352 43.712 60.16 60.16 0 0 0 61.12 59.008 62.592 62.592 0 0 0 40.896-15.168l203.84-176.704a57.6 57.6 0 0 0 0-87.744z"
+            p-id="5250"
+          ></path>
+          <!-- fill="#467CFD" -->
+          <path
+            d="M420.589213 903.808H162.541213V117.76h258.176c35.584 0 64.576-26.368 64.576-58.88S456.429213 0 420.717213 0H97.965213C62.317213 0 33.389213 26.368 33.389213 58.88v903.872c0 32.512 28.864 58.88 64.576 58.88H420.589213c35.584 0 64.576-26.368 64.576-58.88s-28.864-58.944-64.576-58.944z"
+            p-id="5251"
+          ></path>
+        </svg>
       </div>
     </div>
   </header>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+svg {
+  path {
+    fill: none;
+    stroke: #2262fb;
+    stroke-linecap: round;
+    stroke-width: 20;
+    stroke-dasharray: 20000;
+    stroke-dashoffset: 20000;
+    animation: flash 3s linear;
+  }
+}
+@keyframes flash {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -20000;
+  }
+}
+</style>
