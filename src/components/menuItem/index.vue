@@ -34,4 +34,4 @@ export default defineComponent({
 const props = defineProps(["menuList"]);
 </script>
 
-<style scoped></style>
+<style scoped lang="less"></style>

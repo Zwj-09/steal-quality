@@ -85,23 +85,11 @@ const loginOut = () => {
 </template>
 
 <style lang="less" scoped>
-svg {
-  path {
-    fill: none;
-    stroke: #2262fb;
-    stroke-linecap: round;
-    stroke-width: 20;
-    stroke-dasharray: 20000;
-    stroke-dashoffset: 20000;
-    animation: flash 3s linear;
-  }
+:deep(.el-menu--horizontal .el-menu-item:not(.is-disabled):hover) {
+  background-color: #eee;
 }
-@keyframes flash {
-  0% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: -20000;
-  }
+:deep(.el-menu) {
+  border: none;
+  outline: none;
 }
 </style>

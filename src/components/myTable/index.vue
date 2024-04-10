@@ -35,7 +35,47 @@
           ></el-table-column>
 
           <el-table-column
+            v-else-if="item.type == 'img'"
+            :align="item.align"
+            :label="item.label"
+            :width="item.width"
+          >
+            <template #default="slotProps">
+              <el-image
+                class="w-24 h-24 rounded-2xl object-cover cursor-pointer"
+                :src="slotProps.row[item.prop]"
+                :preview-src-list="[slotProps.row[item.prop]]"
+                fit="cover"
+                :preview-teleported="true"
+              />
+            </template>
+          </el-table-column>
+
+          <el-table-column
+            v-else-if="item.type == 'button'"
+            :label="item.label"
+            :align="item.align"
+            :width="item.width"
+            :fixed="item.fixed"
+          >
+            <template #default="{ row, $index }">
+              <slot name="button" :row="row" :index="$index"></slot>
+            </template>
+          </el-table-column>
+
+          <el-table-column
             v-else-if="item.children && !item.children.length"
+            :sortable="item.sortable"
+            :width="item.width"
+            :align="item.align"
+            :prop="item.prop"
+            :label="item.label"
+            show-overflow-tooltip
+          >
+          </el-table-column>
+
+          <el-table-column
+            v-else-if="!item.children"
             :sortable="item.sortable"
             :width="item.width"
             :align="item.align"
@@ -70,10 +110,7 @@
       </el-table>
     </div>
 
-    <div
-      class="pagination h-10 flex items-center justify-end"
-      v-if="isShowPagination"
-    >
+    <div class="h-10 flex items-center justify-end" v-show="isShowPagination">
       <el-pagination
         :current-page="props.tableData.currentPage"
         :page-size="props.tableData.currentSize"
@@ -152,4 +189,9 @@ onUpdated(() => {
 });
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+:deep(.el-table) {
+  --el-table-header-bg-color: #f6f9ff;
+  --el-table-header-text-color: #475669;
+}
+</style>
